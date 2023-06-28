@@ -19,6 +19,7 @@ const SUBGRAPH_URLS = {
       "https://subgraph.satsuma-prod.com/3b2ced13c8d9/gmx/gmx-goerli-referrals/version/synts-stats-230718155146-73cb2da/api",
     syntheticsStats:
       "https://subgraph.satsuma-prod.com/3b2ced13c8d9/gmx/synthetics-goerli-stats/version/synts-stats-230714033353-42d145e/api",
+    leaderboards: "https://api.thegraph.com/subgraphs/name/ullin-oi/leaderboards", // FIXME: this is a dev url
   },
 
   [AVALANCHE]: {
