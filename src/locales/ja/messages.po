@@ -244,10 +244,6 @@ msgstr "請求額"
 msgid "An aggregate of high-quality price feeds determine when liquidations occur. This keeps positions safe from temporary wicks."
 msgstr "清算が発生した時点で高品質の価格フィードの集成価格が確定します。これによりポジションは一時的変動から守られます。"
 
-#: src/pages/Ecosystem/Ecosystem.js
-#~ msgid "Announcement"
-#~ msgstr "告知"
-
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "App"
 msgstr ""

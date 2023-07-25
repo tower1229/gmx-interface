@@ -244,10 +244,6 @@ msgstr "取回金额"
 msgid "An aggregate of high-quality price feeds determine when liquidations occur. This keeps positions safe from temporary wicks."
 msgstr "高质量价格供给的总和决定了清算时间。使头寸不受暂时波动的影响"
 
-#: src/pages/Ecosystem/Ecosystem.js
-#~ msgid "Announcement"
-#~ msgstr "公告"
-
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "App"
 msgstr ""

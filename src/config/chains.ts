@@ -13,19 +13,20 @@ export const AVALANCHE_FUJI = 43113;
 export const ARBITRUM = 42161;
 export const ARBITRUM_TESTNET = 421611;
 export const FEES_HIGH_BPS = 50;
+export const SEPOLIA = 11155111;
 
 // TODO take it from web3
-export const DEFAULT_CHAIN_ID = ARBITRUM;
+export const DEFAULT_CHAIN_ID = SEPOLIA;
 export const CHAIN_ID = DEFAULT_CHAIN_ID;
 
-export const SUPPORTED_CHAIN_IDS = [ARBITRUM, AVALANCHE];
+export const SUPPORTED_CHAIN_IDS = [SEPOLIA, AVALANCHE];
 
 if (isDevelopment()) {
-  SUPPORTED_CHAIN_IDS.push(ARBITRUM_TESTNET, AVALANCHE_FUJI);
+  SUPPORTED_CHAIN_IDS.push(SEPOLIA, AVALANCHE_FUJI);
 }
 
 export const IS_NETWORK_DISABLED = {
-  [ARBITRUM]: false,
+  [SEPOLIA]: false,
   [AVALANCHE]: false,
 };
 
@@ -36,10 +37,11 @@ export const CHAIN_NAMES_MAP = {
   [ARBITRUM]: "Arbitrum",
   [AVALANCHE]: "Avalanche",
   [AVALANCHE_FUJI]: "Avalanche Fuji",
+  [SEPOLIA]: "Sepolia",
 };
 
 export const GAS_PRICE_ADJUSTMENT_MAP = {
-  [ARBITRUM]: "0",
+  [SEPOLIA]: "0",
   [AVALANCHE]: "3000000000", // 3 gwei
 };
 
@@ -48,7 +50,7 @@ export const MAX_GAS_PRICE_MAP = {
 };
 
 export const HIGH_EXECUTION_FEES_MAP = {
-  [ARBITRUM]: 3, // 3 USD
+  [SEPOLIA]: 3, // 3 USD
   [AVALANCHE]: 3, // 3 USD
 };
 
@@ -83,6 +85,20 @@ const constants = {
   },
 
   [ARBITRUM]: {
+    nativeTokenSymbol: "ETH",
+    wrappedTokenSymbol: "WETH",
+    defaultCollateralSymbol: "USDC.e",
+    defaultFlagOrdersEnabled: false,
+    positionReaderPropsLength: 9,
+    v2: true,
+
+    SWAP_ORDER_EXECUTION_GAS_FEE: parseEther("0.0003"),
+    INCREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.0003"),
+    // contract requires that execution fee be strictly greater than instead of gte
+    DECREASE_ORDER_EXECUTION_GAS_FEE: parseEther("0.000300001"),
+  },
+
+  [SEPOLIA]: {
     nativeTokenSymbol: "ETH",
     wrappedTokenSymbol: "WETH",
     defaultCollateralSymbol: "USDC.e",
@@ -149,11 +165,13 @@ export const RPC_PROVIDERS = {
   [ARBITRUM_TESTNET]: ["https://rinkeby.arbitrum.io/rpc"],
   [AVALANCHE]: ["https://api.avax.network/ext/bc/C/rpc"],
   [AVALANCHE_FUJI]: ["https://api.avax-test.network/ext/bc/C/rpc"],
+  [SEPOLIA]: ["https://sepolia.infura.io/v3/"],
 };
 
 export const FALLBACK_PROVIDERS = {
   [ARBITRUM]: [getAlchemyHttpUrl()],
   [AVALANCHE]: ["https://avax-mainnet.gateway.pokt.network/v1/lb/626f37766c499d003aada23b"],
+  [SEPOLIA]: ["https://eth-sepolia.g.alchemy.com/v2/Y3RwKW9kEoiq94_e1pUYNLnVdAO0iGCv"],
 };
 
 export const NETWORK_METADATA: { [chainId: number]: NetworkMetadata } = {
@@ -200,6 +218,17 @@ export const NETWORK_METADATA: { [chainId: number]: NetworkMetadata } = {
     },
     rpcUrls: RPC_PROVIDERS[ARBITRUM],
     blockExplorerUrls: [getExplorerUrl(ARBITRUM)],
+  },
+  [SEPOLIA]: {
+    chainId: "0x" + SEPOLIA.toString(16),
+    chainName: "Arbitrum",
+    nativeCurrency: {
+      name: "ETH",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: RPC_PROVIDERS[SEPOLIA],
+    blockExplorerUrls: [getExplorerUrl(SEPOLIA)],
   },
   [AVALANCHE]: {
     chainId: "0x" + AVALANCHE.toString(16),
@@ -284,6 +313,8 @@ export function getExplorerUrl(chainId) {
     return "https://snowtrace.io/";
   } else if (chainId === AVALANCHE_FUJI) {
     return "https://testnet.snowtrace.io/";
+  } else if (chainId === SEPOLIA) {
+    return "https://sepolia.etherscan.io/";
   }
   return "https://etherscan.io/";
 }

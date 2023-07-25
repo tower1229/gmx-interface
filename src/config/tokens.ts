@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getContract } from "./contracts";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET, SEPOLIA } from "./chains";
 import { Token } from "domain/tokens";
 
 export const TOKENS: { [chainId: number]: Token[] } = {
@@ -371,6 +371,33 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       imageUrl: "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
     },
   ],
+  [SEPOLIA]: [
+    {
+      name: "SepoliaETH",
+      symbol: "ETH",
+      decimals: 18,
+      address: ethers.constants.AddressZero,
+      isNative: true,
+      isShortable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+    },
+    {
+      name: "Ethereum (WETH.e)",
+      symbol: "ETH",
+      address: "0xb16F35c0Ae2912430DAc15764477E179D9B9EbEa",
+      decimals: 18,
+      isShortable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+    },
+    {
+      name: "USD Coin",
+      symbol: "USDC",
+      address: "0x51fCe89b9f6D4c530698f181167043e1bB4abf89",
+      decimals: 6,
+      isStable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
+    },
+  ],
 };
 
 export const ADDITIONAL_TOKENS: { [chainId: number]: Token[] } = {
@@ -418,6 +445,28 @@ export const ADDITIONAL_TOKENS: { [chainId: number]: Token[] } = {
       imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
     },
   ],
+  [SEPOLIA]: [
+    {
+      name: "GMX",
+      symbol: "GMX",
+      address: getContract(SEPOLIA, "GMX"),
+      decimals: 18,
+      imageUrl: "https://assets.coingecko.com/coins/images/18323/small/arbit.png?1631532468",
+    },
+    {
+      name: "Escrowed GMX",
+      symbol: "esGMX",
+      address: getContract(SEPOLIA, "ES_GMX"),
+      decimals: 18,
+    },
+    {
+      name: "GMX LP",
+      symbol: "GLP",
+      address: getContract(SEPOLIA, "GLP"),
+      decimals: 18,
+      imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
+    },
+  ],
 };
 
 export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } } = {
@@ -452,6 +501,23 @@ export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } }
       symbol: "GLP",
       decimals: 18,
       address: getContract(AVALANCHE, "StakedGlpTracker"), // address of fsGLP token because user only holds fsGLP
+      imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
+    },
+  },
+  [SEPOLIA]: {
+    // SEPOLIA
+    GMX: {
+      name: "GMX",
+      symbol: "GMX",
+      decimals: 18,
+      address: getContract(SEPOLIA, "GMX"),
+      imageUrl: "https://assets.coingecko.com/coins/images/18323/small/arbit.png?1631532468",
+    },
+    GLP: {
+      name: "GMX LP",
+      symbol: "GLP",
+      decimals: 18,
+      address: getContract(SEPOLIA, "StakedGlpTracker"), // address of fsGLP token because user only holds fsGLP
       imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",
     },
   },
@@ -564,6 +630,19 @@ export const ICONLINKS = {
     USDC: {
       coingecko: "https://www.coingecko.com/en/coins/usd-coin",
       avalanche: "https://testnet.snowtrace.io/address/0xC492c8d82DC576Ad870707bb40EDb63E2026111E",
+    },
+  },
+  [SEPOLIA]: {
+    GMX: {
+      coingecko: "https://www.coingecko.com/en/coins/gmx",
+      sepolia: "https://sepolia.etherscan.io/address/0xb9b84f0fd7fb846933c5bcefafba483fe1b6cd1e",
+    },
+    GLP: {
+      sepolia: "https://sepolia.etherscan.io/address/0xc6bc996320c16cb59f73410ab42ee1c589a0f70a",
+    },
+    USDC: {
+      coingecko: "https://www.coingecko.com/en/coins/usd-coin",
+      sepolia: "https://sepolia.etherscan.io/address/0xb16f35c0ae2912430dac15764477e179d9b9ebea",
     },
   },
 };

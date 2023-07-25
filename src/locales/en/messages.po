@@ -244,10 +244,6 @@ msgstr "Amount to claim"
 msgid "An aggregate of high-quality price feeds determine when liquidations occur. This keeps positions safe from temporary wicks."
 msgstr "An aggregate of high-quality price feeds determine when liquidations occur. This keeps positions safe from temporary wicks."
 
-#: src/pages/Ecosystem/Ecosystem.js
-#~ msgid "Announcement"
-#~ msgstr "Announcement"
-
 #: src/components/Header/HomeHeaderLinks.tsx
 msgid "App"
 msgstr "App"
