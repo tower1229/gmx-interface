@@ -101,7 +101,7 @@ const constants = {
   [SEPOLIA]: {
     nativeTokenSymbol: "ETH",
     wrappedTokenSymbol: "WETH",
-    defaultCollateralSymbol: "USDC.e",
+    defaultCollateralSymbol: "USDC",
     defaultFlagOrdersEnabled: false,
     positionReaderPropsLength: 9,
     v2: true,
@@ -165,7 +165,7 @@ export const RPC_PROVIDERS = {
   [ARBITRUM_TESTNET]: ["https://rinkeby.arbitrum.io/rpc"],
   [AVALANCHE]: ["https://api.avax.network/ext/bc/C/rpc"],
   [AVALANCHE_FUJI]: ["https://api.avax-test.network/ext/bc/C/rpc"],
-  [SEPOLIA]: ["https://sepolia.infura.io/v3/"],
+  [SEPOLIA]: ["https://rpc.sepolia.org/"],
 };
 
 export const FALLBACK_PROVIDERS = {
