@@ -46,7 +46,6 @@ export function useInfoTokens(
       ]),
     }
   );
-  console.log(2222222222, vaultTokenInfo);
 
   const indexPricesUrl = getServerUrl(chainId, "/prices");
 
